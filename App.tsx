@@ -51,8 +51,6 @@ const App: React.FC = () => {
   }, []);
 
   const handleGenerate = useCallback(() => {
-    // Filter out empty fields to keep output clean, optionally
-    // or keep them if strict format required. Let's keep strict but trim whitespace.
     const validFields = fields.filter(f => f.label.trim() || f.value.trim());
     
     if (validFields.length === 0) {
@@ -71,12 +69,12 @@ const App: React.FC = () => {
   }, [fields]);
 
   return (
-    <div className="min-h-screen pb-32">
+    <div className="min-h-screen bg-[#f8fafc] pb-40">
       {/* Header */}
       <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm">
-        <div className="max-w-3xl mx-auto px-4 py-4 flex items-center gap-3">
-          <div className="bg-blue-100 p-2 rounded-lg text-blue-600">
-            <FileText size={24} />
+        <div className="max-w-3xl mx-auto px-4 py-4 flex items-center gap-4">
+          <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-2.5 rounded-xl text-white shadow-md">
+            <FileText size={24} strokeWidth={2.5} />
           </div>
           <input
             type="text"
@@ -104,32 +102,32 @@ const App: React.FC = () => {
         </div>
 
         {/* Add Button Area */}
-        <div className="relative group">
-            <div className="absolute inset-0 flex items-center" aria-hidden="true">
-            <div className="w-full border-t border-gray-200"></div>
+        <div className="relative group pt-4">
+            <div className="absolute inset-0 flex items-center pt-4" aria-hidden="true">
+              <div className="w-full border-t border-gray-200"></div>
             </div>
             <div className="relative flex justify-center">
-            <button
+              <button
                 onClick={handleAddField}
-                className="inline-flex items-center gap-2 px-6 py-2 border-2 border-dashed border-gray-300 shadow-sm text-sm font-medium rounded-full text-gray-500 bg-white hover:bg-gray-50 hover:border-blue-400 hover:text-blue-500 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-            >
-                <Plus size={18} />
+                className="inline-flex items-center gap-2 px-6 py-2.5 border border-gray-300 shadow-sm text-sm font-semibold rounded-full text-gray-600 bg-white hover:bg-gray-50 hover:border-blue-500 hover:text-blue-600 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              >
+                <Plus size={18} strokeWidth={2.5} />
                 Add New Field
-            </button>
+              </button>
             </div>
         </div>
       </main>
 
       {/* Floating Footer Actions */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-white via-white to-transparent pb-8 pt-12 z-20 pointer-events-none">
-        <div className="max-w-3xl mx-auto flex items-center justify-between gap-4 pointer-events-auto">
-          <Button variant="secondary" onClick={handleClearAll} icon={<Eraser size={18}/>} className="hidden sm:flex">
+      <div className="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-white via-white/95 to-transparent z-20">
+        <div className="max-w-3xl mx-auto flex items-center justify-between gap-4">
+          <Button variant="secondary" onClick={handleClearAll} icon={<Eraser size={18}/>} className="hidden sm:flex shadow-sm">
              Clear Values
           </Button>
           
           <Button 
             onClick={handleGenerate} 
-            className="flex-1 sm:flex-none sm:w-auto shadow-xl shadow-blue-500/20 text-lg px-8 py-3"
+            className="flex-1 sm:flex-none sm:w-auto shadow-xl shadow-blue-500/25 text-lg px-8 py-3 rounded-xl hover:-translate-y-0.5"
             icon={<Sparkles size={20} />}
           >
             Generate Summary

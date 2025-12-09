@@ -11,11 +11,11 @@ interface InputCardProps {
 
 export const InputCard: React.FC<InputCardProps> = ({ field, onUpdate, onRemove, isFirst }) => {
   return (
-    <div className="group relative bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 animate-in fade-in slide-in-from-bottom-4">
+    <div className="group relative bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md hover:border-blue-200 transition-all duration-200">
       <div className="flex gap-4 items-start">
-        <div className="flex-1 space-y-4">
-          <div className="space-y-1">
-            <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider">
+        <div className="flex-1 space-y-5">
+          <div className="space-y-1.5">
+            <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider">
               Label / Title
             </label>
             <input
@@ -23,20 +23,20 @@ export const InputCard: React.FC<InputCardProps> = ({ field, onUpdate, onRemove,
               value={field.label}
               onChange={(e) => onUpdate(field.id, { label: e.target.value })}
               placeholder={isFirst ? "e.g., Professor Name" : "Label"}
-              className="w-full text-lg font-medium text-gray-800 border-b-2 border-transparent hover:border-gray-200 focus:border-blue-500 focus:outline-none bg-transparent transition-colors placeholder-gray-300"
+              className="w-full text-lg font-medium text-gray-900 border-b border-gray-200 focus:border-blue-500 focus:outline-none bg-transparent transition-colors py-1 placeholder-gray-300"
             />
           </div>
           
-          <div className="space-y-1">
-            <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider">
+          <div className="space-y-1.5">
+            <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider">
               Description / Value
             </label>
             <textarea
               value={field.value}
               onChange={(e) => onUpdate(field.id, { value: e.target.value })}
               placeholder={isFirst ? "e.g., Dr. Jane Smith" : "Enter description..."}
-              rows={2}
-              className="w-full text-gray-600 bg-gray-50 rounded-lg p-3 border border-gray-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all resize-y placeholder-gray-400"
+              rows={3}
+              className="w-full text-gray-700 bg-gray-50 rounded-lg p-3 border border-gray-200 focus:bg-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all resize-y placeholder-gray-400 leading-relaxed"
             />
           </div>
         </div>
