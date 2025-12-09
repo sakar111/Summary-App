@@ -1,0 +1,5 @@
+{
+  "name": "Dynamic Summary Builder",
+  "description": "A dynamic form builder that allows users to create custom fields and generate a formatted text summary.",
+  "requestFramePermissions": []
+}
