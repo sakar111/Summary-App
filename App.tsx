@@ -12,7 +12,10 @@ const App: React.FC = () => {
   ]);
   const [showResult, setShowResult] = useState(false);
   const [generatedContent, setGeneratedContent] = useState('');
+  
   const bottomRef = useRef<HTMLDivElement>(null);
+  const dragItem = useRef<number | null>(null);
+  const dragOverItem = useRef<number | null>(null);
 
   // Scroll to bottom when new field is added
   useEffect(() => {
@@ -49,6 +52,33 @@ const App: React.FC = () => {
       setFields(prev => prev.map(field => ({ ...field, value: '' })));
     }
   }, []);
+
+  // Drag and Drop Handlers
+  const handleDragStart = (index: number) => {
+    dragItem.current = index;
+  };
+
+  const handleDragEnter = (index: number) => {
+    // Prevent redundant updates
+    if (dragItem.current === null || dragItem.current === index) return;
+
+    const newFields = [...fields];
+    const draggedItemContent = newFields[dragItem.current];
+    
+    // Remove the dragged item
+    newFields.splice(dragItem.current, 1);
+    // Insert it at the new position
+    newFields.splice(index, 0, draggedItemContent);
+    
+    // Update reference to track new position
+    dragItem.current = index;
+    setFields(newFields);
+  };
+
+  const handleDragEnd = () => {
+    dragItem.current = null;
+    dragOverItem.current = null;
+  };
 
   const handleGenerate = useCallback(() => {
     const validFields = fields.filter(f => f.label.trim() || f.value.trim());
@@ -93,9 +123,13 @@ const App: React.FC = () => {
           {fields.map((field, index) => (
             <InputCard
               key={field.id}
+              index={index}
               field={field}
               onUpdate={handleUpdateField}
               onRemove={handleRemoveField}
+              onDragStart={handleDragStart}
+              onDragEnter={handleDragEnter}
+              onDragEnd={handleDragEnd}
               isFirst={index === 0}
             />
           ))}
