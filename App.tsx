@@ -61,8 +61,9 @@ const App: React.FC = () => {
     const output = validFields.map(field => {
       const label = field.label.trim() || "Untitled";
       const value = field.value.trim() || "N/A";
-      return `${label}: ${value}`;
-    }).join('\n');
+      // Wrap value in quotes and ensure clear separation
+      return `${label}: "${value}"`;
+    }).join('\n\n'); // Double newline provides the best separation for block text
 
     setGeneratedContent(output);
     setShowResult(true);

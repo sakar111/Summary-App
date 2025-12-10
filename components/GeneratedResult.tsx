@@ -31,7 +31,7 @@ export const GeneratedResult: React.FC<GeneratedResultProps> = ({ content, onClo
         </div>
 
         <div className="p-6 overflow-y-auto bg-gray-50">
-          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm font-mono text-sm leading-relaxed whitespace-pre-wrap text-gray-700">
+          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm font-mono text-base leading-relaxed whitespace-pre-wrap text-gray-700">
             {content}
           </div>
         </div>

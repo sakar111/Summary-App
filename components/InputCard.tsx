@@ -43,7 +43,7 @@ export const InputCard: React.FC<InputCardProps> = ({ field, onUpdate, onRemove,
 
         <button
           onClick={() => onRemove(field.id)}
-          className="text-gray-300 hover:text-red-500 hover:bg-red-50 p-2 rounded-lg transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
+          className="text-gray-400 hover:text-red-500 hover:bg-red-50 p-2 rounded-lg transition-colors"
           title="Remove field"
         >
           <Trash2 size={20} />
